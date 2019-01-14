@@ -6,9 +6,9 @@ def executa(conexao):
                       IDPROGRAMA, EMPRESA, USUARIO 
                       FROM TGERMENU ORDER BY 1""")
     
-    query = ("INSERT INTO TGERMENU (IDMENU, IDMENUPARENT, DESCRICAO, TIPO, "
+    query = ("UPDATE OR INSERT INTO TGERMENU (IDMENU, IDMENUPARENT, DESCRICAO, TIPO, "
                                     "IMAGEM, IDPROGRAMA, EMPRESA, USUARIO) "
-                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');\n ")
+                "VALUES ({0}, {1}, '{2}', {3}, {4}, {5}, {6}, '{7}') MATCHING (IDMENU);\n ")
     menus = ''
     for row in cursor:
         IDMENU, IDMENUPARENT, DESCRICAO, TIPO, IMAGEM, IDPROGRAMA, EMPRESA, USUARIO = row

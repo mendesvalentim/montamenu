@@ -21,19 +21,19 @@ separador = """
 """
 def montaprogramas():    
     modulos = ExtraiModulos.executa(conexao)
-    modulos = separador + modulos + 'Commit;'
+    modulos = separador + modulos + 'COMMIT WORK;'
     
     programas = ExtraiProgramas.executa(conexao)
-    programas = separador + programas + 'Commit;'
+    programas = separador + programas + 'COMMIT WORK;'
     
     menus = ExtraiMenus.executa(conexao)
-    menus = separador + menus + 'Commit;'
+    menus = separador + menus + 'COMMIT WORK;'
     
     relatorios = ExtraiRelatorios.executa(conexao)
-    relatorios = separador + relatorios + 'Commit;'
+    relatorios = separador + relatorios + 'COMMIT WORK;'
     
     autonomia = ExtraiAutonomias.executa(conexao)
-    autonomia = separador + autonomia + 'Commit;'    
+    autonomia = separador + autonomia + 'COMMIT WORK;'    
  
     return  modulos + programas + menus + relatorios + autonomia
 
