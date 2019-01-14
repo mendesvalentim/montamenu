@@ -19,24 +19,50 @@ separador = """
 /* ******************************************************************************** */
 
 """
-def montaprogramas():    
-    modulos = ExtraiModulos.executa(conexao)
-    modulos = separador + modulos + 'COMMIT WORK;'
-    
-    programas = ExtraiProgramas.executa(conexao)
-    programas = separador + programas + 'COMMIT WORK;'
-    
-    menus = ExtraiMenus.executa(conexao)
-    menus = separador + menus + 'COMMIT WORK;'
-    
-    relatorios = ExtraiRelatorios.executa(conexao)
-    relatorios = separador + relatorios + 'COMMIT WORK;'
-    
-    autonomia = ExtraiAutonomias.executa(conexao)
-    autonomia = separador + autonomia + 'COMMIT WORK;'    
- 
-    return  modulos + programas + menus + relatorios + autonomia
 
-arq = open("Programas.sql", "w")
+def modulos():
+    modulo = ExtraiModulos.executa(conexao)
+    modulo = separador + modulo + 'COMMIT WORK;'
+    arq = open("Modulos.sql", "w")
+    arq.write(modulo)
+    arq.close()   
+    return modulo
+    
+def programas():
+    programa = ExtraiProgramas.executa(conexao)
+    programa = separador + programa + 'COMMIT WORK;'
+    arq = open("Programas.sql", "w")
+    arq.write(programa)
+    arq.close()   
+    return programa
+
+def menus():
+    menu = ExtraiMenus.executa(conexao)
+    menu = separador + menu + 'COMMIT WORK;'    
+    arq = open("Menus.sql", "w")
+    arq.write(menu)
+    arq.close()  
+    return menu
+
+def relatorios():
+    relatorio = ExtraiRelatorios.executa(conexao)
+    relatorio = separador + relatorio + 'COMMIT WORK;'
+    arq = open("Relatorios.sql", "w")
+    arq.write(relatorio)
+    arq.close()       
+    return relatorio  
+
+def autonomias():
+    autonomia = ExtraiAutonomias.executa(conexao)
+    autonomia = separador + autonomia + 'COMMIT WORK;'        
+    arq = open("Autonimias.sql", "w")
+    arq.write(autonomia)
+    arq.close()       
+    return autonomia
+
+def montaprogramas():    
+    return  modulos() + programas() + menus() + relatorios()
+    
+arq = open("MenuCompleto.sql", "w")
 arq.write(montaprogramas())
 arq.close()
